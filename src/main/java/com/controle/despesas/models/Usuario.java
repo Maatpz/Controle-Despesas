@@ -56,5 +56,5 @@ public class Usuario{
 
     @Column(name = "data_atualizacao")
     @UpdateTimestamp
-    private LocalDateTime data_atualizacao;
+    private LocalDateTime dataAtualizacao;
 }
