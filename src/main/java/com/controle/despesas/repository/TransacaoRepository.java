@@ -20,9 +20,10 @@ public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
     Double somarValorPorUsuarioETipo(@Param("usuarioId") Long usuarioId, @Param("tipo") Tipo tipo);
 
     @Query("SELECT SUM(t.valor) FROM Transacao t WHERE t.usuario.id = :usuarioId AND t.tipo = :tipo AND t.data BETWEEN :dataInicio AND :dataFim")
-    Double somarValorPorUsuarioTipoEPeriodo(@Param("usuarioId") Long usuarioId, @Param("tipo") Tipo tipo, 
-                                             @Param("dataInicio") LocalDateTime dataInicio, 
-                                             @Param("dataFim") LocalDateTime dataFim);
+    Double somarValorPorUsuarioTipoEPeriodo(@Param("usuarioId") Long usuarioId, 
+                                            @Param("tipo") Tipo tipo, 
+                                            @Param("dataInicio") LocalDateTime dataInicio, 
+                                            @Param("dataFim") LocalDateTime dataFim);
 }
 
   
