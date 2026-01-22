@@ -3,8 +3,6 @@ package com.controle.despesas.models;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -34,8 +31,8 @@ import lombok.NoArgsConstructor;
 public class Usuario{
 
     @Id 
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     @Size(max = 50)
@@ -50,26 +47,8 @@ public class Usuario{
     @Column(nullable = false)
     private String senha;
 
-    // ROLE_USER ou ROLE_ADMIN
-    @Column(nullable = false)
-    private String role = "ROLE_USER";
-
-    // @Enumerated(EnumType.STRING)
-    // private Role roleEnum = Role.USER;
-
-    private Boolean ativo = true;
-
-
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Transacao> transacoes = new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Categoria> categorias = new ArrayList<>();
-
-
-    @Column(name = "saldo_economia")
-    private Double saldoEconomia = 0.0;
 
     @Column(name = "data_criacao")
     @CreationTimestamp

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,8 +30,8 @@ public class Transacao {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotNull(message = "Valor e obrigatorio")
     @Positive(message = "Valor deve ser positivo")
@@ -47,22 +48,11 @@ public class Transacao {
     
     @Column(nullable = false, name = "data_transaçao")
     @CreationTimestamp
-    private LocalDate data;
+    private LocalDateTime data;
 
-
-    @Column(name = "mes_ano")
-    private String mesAno;
-
-    // Relacionamento: uma transacao pertence a um usuario
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
-
-    // Relacionamento: uma transacao pertence a uma categoria
-    @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
-    private Categoria categoria;
-
 
     @Column(name = "data_criacao")
     @CreationTimestamp
@@ -70,7 +60,7 @@ public class Transacao {
 
     
     @Column(name = "data_atualizacao")
-    @CreationTimestamp
+    @UpdateTimestamp
     private LocalDateTime data_atualizacao;
 
 
