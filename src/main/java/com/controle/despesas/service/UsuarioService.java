@@ -41,7 +41,8 @@ public class UsuarioService {
 
     public List<UsuarioResponse> listarTodos() {
         return usuarioRepository.findAll().stream()
-            .map(this::toResponse)
+             .map(this::toResponse)
+            //  .map(usuario -> toResponse(usuario))
             .collect(Collectors.toList());
     }
 
