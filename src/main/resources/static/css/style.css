@@ -1,0 +1,156 @@
+@import url('variables.css');
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    background-color: var(--color-primary);
+    color: var(--text-light);
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.table {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.table thead th {
+    border-bottom: 2px solid var(--color-primary);
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: var(--text-light);
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.badge {
+    padding: 0.3em 0.6em;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+.badge.bg-warning {
+    background-color: var(--color-accent) !important;
+    color: var(--color-primary);
+}
+
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-warning {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.btn-warning:hover {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    color: var(--color-primary);
+}
+
+.btn-outline-warning {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25);
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    background-color: transparent;
+}
+
+.modal-content {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.bg-dark {
+    background-color: var(--color-primary) !important;
+}
+
+.border-warning {
+    border-color: var(--color-accent) !important;
+}
+
+.text-warning {
+    color: var(--color-accent) !important;
+}
+
+/* Login centralizado */
+#loginScreen {
+    position: relative;
+}
+
+/* Dashboard compacto */
+#dashboardScreen .card-body {
+    padding: 0.75rem;
+}
+
+#dashboardScreen .card {
+    margin-bottom: 0.5rem;
+}
+
+/* Tabela compacta */
+.table-sm td, .table-sm th {
+    padding: 0.5rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #loginScreen .col-md-4 {
+        width: 90%;
+    }
+    
+    #dashboardScreen .row {
+        margin-bottom: 0.5rem;
+    }
+}
