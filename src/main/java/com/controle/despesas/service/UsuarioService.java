@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @Transactional
     public UsuarioResponse criarUsuario(UsuarioRequest request) {
         if (usuarioRepository.existsByEmail(request.getEmail())) {
@@ -27,7 +30,7 @@ public class UsuarioService {
         Usuario usuario = new Usuario();
         usuario.setNome(request.getNome());
         usuario.setEmail(request.getEmail());
-        usuario.setSenha(request.getSenha());
+        usuario.setSenha(encoder.encode(request.getSenha()));
 
         usuario = usuarioRepository.save(usuario);
         return toResponse(usuario);
@@ -41,8 +44,7 @@ public class UsuarioService {
 
     public List<UsuarioResponse> listarTodos() {
         return usuarioRepository.findAll().stream()
-             .map(this::toResponse)
-            //  .map(usuario -> toResponse(usuario))
+            .map(usuario -> toResponse(usuario))
             .collect(Collectors.toList());
     }
 
