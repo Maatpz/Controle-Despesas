@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.controle.despesas.models.Usuario;
 
-public interface UsuariorRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByNomeContainingIgnoreCaseAndEmailContainingIgnoreCase(
         String nome, String email);

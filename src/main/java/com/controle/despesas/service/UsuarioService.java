@@ -10,13 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.controle.despesas.dto.request.UsuarioRequest;
 import com.controle.despesas.dto.response.UsuarioResponse;
 import com.controle.despesas.models.Usuario;
-import com.controle.despesas.repository.UsuariorRepository;
+import com.controle.despesas.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
 
     @Autowired
-    private UsuariorRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Transactional
     public UsuarioResponse criarUsuario(UsuarioRequest request) {

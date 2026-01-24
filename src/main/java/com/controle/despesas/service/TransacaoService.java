@@ -16,7 +16,7 @@ import com.controle.despesas.models.Transacao;
 import com.controle.despesas.models.Usuario;
 import com.controle.despesas.models.enums.Tipo;
 import com.controle.despesas.repository.TransacaoRepository;
-import com.controle.despesas.repository.UsuariorRepository;
+import com.controle.despesas.repository.UsuarioRepository;
 
 @Service
 public class TransacaoService {
@@ -25,7 +25,7 @@ public class TransacaoService {
     private TransacaoRepository transacaoRepository;
 
     @Autowired
-    private UsuariorRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Transactional
     public TransacaoResponse criaTransacao(Long usuarioId, TransacaoRequest request) {
