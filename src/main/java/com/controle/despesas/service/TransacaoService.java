@@ -16,7 +16,7 @@ import com.controle.despesas.models.Transacao;
 import com.controle.despesas.models.Usuario;
 import com.controle.despesas.models.enums.Tipo;
 import com.controle.despesas.repository.TransacaoRepository;
-import com.controle.despesas.repository.UsuariorRepository;
+import com.controle.despesas.repository.UsuarioRepository;
 
 @Service
 public class TransacaoService {
@@ -25,7 +25,7 @@ public class TransacaoService {
     private TransacaoRepository transacaoRepository;
 
     @Autowired
-    private UsuariorRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Transactional
     public TransacaoResponse criaTransacao(Long usuarioId, TransacaoRequest request) {
@@ -56,23 +56,19 @@ public class TransacaoService {
         responses.add(toResponse(transacao));
     }
     return responses;
-
-        // return transacaoRepository.findByUsuarioId(usuarioId).stream()
-        //     .map(transacao -> toResponse(transacao))
-        //     // .map(this::toResponse)
-        //     .collect(Collectors.toList());
     }
 
 
     public List<TransacaoResponse> listarPorUsuarioETipo(Long usuarioId, Tipo tipo) {
         return transacaoRepository.findByUsuarioIdAndTipo(usuarioId, tipo).stream()
             .map(transacao -> toResponse(transacao))
-            // .map(this::toResponse)
             .collect(Collectors.toList());
     }
 
     public List<TransacaoResponse> listarPorUsuarioEPeriodo(Long usuarioId, LocalDateTime dataInicio, LocalDateTime dataFim) {
-        return transacaoRepository.findByUsuarioIdAndDataBetween(usuarioId, dataInicio, dataFim).stream()
+        return transacaoRepository.findByUsuarioIdAndDataBetween(usuarioId, dataInicio, dataFim)
+            //estudar melhor esse formato de stream de coleção  e o uso do map e esses dois pontos sem lambda
+            .stream()
             .map(this::toResponse)
             .collect(Collectors.toList());
     }
