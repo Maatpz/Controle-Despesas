@@ -90,13 +90,10 @@ async function register() {
             throw new Error(error.mensagem || 'Erro ao cadastrar');
         }
 
-        const usuario = await response.json();
-        usuarioAtual = { id: usuario.id, nome: usuario.nome };
-        localStorage.setItem('usuarioId', usuario.id);
-        localStorage.setItem('usuarioNome', usuario.nome);
+        await response.json();
 
-        alert('Cadastro realizado com sucesso!');
-        window.location.href = 'dashboard.html';
+        alert('Cadastro realizado com sucesso! Por favor, faça login.');
+        window.location.href = 'index.html';
     } catch (error) {
         alert('Erro ao cadastrar: ' + error.message);
     }
