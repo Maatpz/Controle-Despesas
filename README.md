@@ -62,10 +62,3 @@ Sistema de controle financeiro pessoal que permite aos usuários gerenciar suas 
 | :--- | :--- |
 | `index.html` | Tela de Login e Cadastro (Landing page) |
 | `dashboard.html` | Painel principal com resumo e listagem de transações |
-
-## Como Executar
-
-1.  Clone o repositório.
-2.  Importe o projeto em sua IDE como projeto Maven.
-3.  Execute a classe principal do Spring Boot (`DespesasApplication`).
-4.  Acesse `http://localhost:8080/index.html` no navegador.
